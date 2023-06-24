@@ -1,0 +1,68 @@
+version: '2'
+volumes:
+  dbdata1:
+services:
+    vue:
+        container_name: skeleton-vue
+        build:
+            context: ./frontend
+        ports:
+            - 8080:8080
+        volumes:
+            - ./frontend/:/opt/app
+            - /opt/node_modules
+        tty: true
+        user: node
+    mysql:
+        container_name: skeleton-db
+        image: mysql:8.0.23
+        ports:
+            - "33061:3306"
+        volumes:
+            - dbdata1:/var/lib/mysql
+        environment:
+            - "MYSQL_DATABASE=db_name"
+            - "MYSQL_USER=user1"
+            - "MYSQL_PASSWORD=secret"
+            - "MYSQL_ROOT_PASSWORD=secret"
+        command: ['--innodb_flush_log_at_trx_commit=2']
+    api:
+        container_name: skeleton-laravel
+        build:
+            context: ./api 
+        ports:
+            - "8001:8001"
+        env_file:
+            - ./api/.env
+        depends_on:
+            - mysql
+    # testing:
+    #     image: mysql:8.0.23
+    #     ports:
+    #         - "33062:3306"
+    #     volumes:
+    #         - ./api/docker/mysql:/docker-entrypoint-initdb.d
+    #     tmpfs:
+    #         - /var/lib/mysql
+    #     environment:
+    #         - "MYSQL_ROOT_PASSWORD=secret"
+    #     command: ['--innodb_flush_log_at_trx_commit=2']
+    # fpm:
+    #     build:
+    #         context: ./api/
+    #     links:
+    #         - mysql
+    #     volumes:
+    #         - ./php.ini:/usr/local/etc/php/conf.d/php.ini
+    #         - ./api:/var/www
+    #         - ~/.ssh:/home/ubuntu/.ssh
+    #     environment:
+    #         - "DB_PORT=3306"
+    #         - "DB_HOST=mysql"
+    #     user: ubuntu
+    # mail:
+    #     image: maildev/maildev
+    #     ports:
+    #         - "8025:80"
+    #     command: bin/maildev --web 80 --smtp 25 --hide-extensions STARTTLS
+
