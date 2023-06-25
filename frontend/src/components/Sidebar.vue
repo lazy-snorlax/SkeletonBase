@@ -1,7 +1,7 @@
 <template>
     <aside :class="`${is_expanded ? 'is-expanded' : ''}`">
         <div class="logo">
-            <img src="logo.png" alt="LOGO.png">
+            <img :src="logoURL" alt="LOGO.png">
         </div>
 
         <div class="menu-toggle-wrap">
@@ -14,30 +14,24 @@
 
         <div class="menu">
             <router-link to="/" class="button">
+                <span class="text">Home</span>
+            </router-link>
+            <router-link to="/item-1" class="button">
                 <span class="text">Item #1</span>
             </router-link>
-            <router-link to="/" class="button">
+            <router-link to="/item-2" class="button">
                 <span class="text">Item #2</span>
-            </router-link>
-            <router-link to="/" class="button">
-                <span class="text">Item #3</span>
-            </router-link>
-            <router-link to="/" class="button">
-                <span class="text">Item #4</span>
-            </router-link>
-            <router-link to="/" class="button">
-                <span class="text">Item #5</span>
             </router-link>
         </div>
 
         <div class="flex"></div>
 
         <div class="menu">
-            <router-link to="/" class="button">
-                <span class="text">Item #6</span>
+            <router-link to="/item-3" class="button">
+                <span class="text">Item #3</span>
             </router-link>
-            <router-link to="/" class="button">
-                <span class="text">Item #7</span>
+            <router-link to="/item-4" class="button">
+                <span class="text">Item #4</span>
             </router-link>
         </div>
 
@@ -46,6 +40,7 @@
 
 <script setup>
 import {ref} from 'vue'
+import logoURL from '../assets/logo.svg'
 
 const is_expanded = ref(localStorage.getItem("is_expanded") === "true")
 

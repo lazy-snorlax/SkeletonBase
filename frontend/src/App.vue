@@ -1,14 +1,32 @@
+<template>
+	<!-- TODO: Change to login check -->
+	<div v-if="$route.name !== 'login'" class="app">
+		<!-- Sidebar -->
+		<Sidebar />
+
+		<!-- Content -->
+		<router-view class="bg-light h-100" />
+	</div>
+	<fragment v-else>
+		<router-view />
+	</fragment>
+</template>
+
 <script setup>
-import Header from './components/Header.vue';
 import Sidebar from './components/Sidebar.vue';
 </script>
 
-<template>
-  <div id="app">
-    <!-- <Header></Header> -->
-    <Sidebar></Sidebar>
-  </div>
-</template>
+<!-- <script>
+import { useRouter, useRoute } from 'vue-router';
+
+export default {
+	setup() {
+		const router = useRouter()
+		const route = useRoute()
+	}
+}
+
+</script> -->
 
 <style lang="scss">
 :root {
@@ -27,7 +45,7 @@ import Sidebar from './components/Sidebar.vue';
 	font-family: 'Fira sans', sans-serif;
 }
 body {
-	background: var(--light);
+	background: var(--dark);
 }
 button {
 	cursor: pointer;
