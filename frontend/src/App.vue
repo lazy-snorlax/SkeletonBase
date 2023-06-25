@@ -45,6 +45,7 @@ export default {
 	font-family: 'Fira sans', sans-serif;
 }
 body {
+	display: inline;
 	background: var(--dark);
 }
 button {

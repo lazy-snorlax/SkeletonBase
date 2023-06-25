@@ -8,9 +8,9 @@ aside {
 #app {
   /* 
   padding: 2rem;
+  max-width: 1280px;
   font-weight: normal; */
   
-  max-width: 1280px;
   margin: 0 auto;
   height: 100%;
   min-height: 100%;
