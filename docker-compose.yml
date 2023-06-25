@@ -47,19 +47,19 @@ services:
     #     environment:
     #         - "MYSQL_ROOT_PASSWORD=secret"
     #     command: ['--innodb_flush_log_at_trx_commit=2']
-    # fpm:
-    #     build:
-    #         context: ./api/
-    #     links:
-    #         - mysql
-    #     volumes:
-    #         - ./php.ini:/usr/local/etc/php/conf.d/php.ini
-    #         - ./api:/var/www
-    #         - ~/.ssh:/home/ubuntu/.ssh
-    #     environment:
-    #         - "DB_PORT=3306"
-    #         - "DB_HOST=mysql"
-    #     user: ubuntu
+    fpm:
+        build:
+            context: ./api/
+        links:
+            - mysql
+        volumes:
+            - ./php.ini:/usr/local/etc/php/conf.d/php.ini
+            - ./api:/var/www
+            - ~/.ssh:/home/ubuntu/.ssh
+        environment:
+            - "DB_PORT=3306"
+            - "DB_HOST=mysql"
+        user: ubuntu
     # mail:
     #     image: maildev/maildev
     #     ports:
