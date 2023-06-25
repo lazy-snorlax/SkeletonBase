@@ -21,8 +21,8 @@ services:
         volumes:
             - dbdata1:/var/lib/mysql
         environment:
-            - "MYSQL_DATABASE=db_name"
-            - "MYSQL_USER=user1"
+            - "MYSQL_DATABASE=skeleton"
+            - "MYSQL_USER=root"
             - "MYSQL_PASSWORD=secret"
             - "MYSQL_ROOT_PASSWORD=secret"
         command: ['--innodb_flush_log_at_trx_commit=2']
