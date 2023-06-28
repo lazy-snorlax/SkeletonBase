@@ -44,11 +44,13 @@ services:
     vue:
         container_name: skeleton-vue
         build:
-            context: ./frontend
+            context: ./vue
         ports:
             - 8080:8080
+        env_file:
+            - ./vue/.env
         volumes:
-            - ./frontend/:/opt/app
+            - ./vue/:/opt/app
             - node_modules:/opt/node_modules
         user: node
         tty: true
