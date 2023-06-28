@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Conflicts\Conflict;
+
 return [
 
     /*
@@ -16,18 +18,38 @@ return [
     */
 
     'paths' => ['*'],
+    'allowed_methods' => [
+        'POST',
+        'GET',
+        'OPTIONS',
+        'PUT',
+        'PATCH',
+        'DELETE',
+    ],
 
-    'allowed_methods' => ['*'],
-
-    'allowed_origins' => [env('FRONTEND_URL', 'http://localhost:3000')],
+    'allowed_origins' => [
+        env('APP_URL'),
+        env('FRONTEND_URL')
+    ],
 
     'allowed_origins_patterns' => [],
 
-    'allowed_headers' => ['*'],
+    'allowed_headers' => [
+        'X-XSRF-TOKEN',
+        'X-Requested-With',
+        'Content-Type',
+        'X-Auth-Token',
+        'Origin',
+        'Authorization',
+        'Cache-Control',
+    ],
 
-    'exposed_headers' => [],
+    'exposed_headers' => [
+        'Authorization',
+        'Content-Disposition'
+    ],
 
-    'max_age' => 0,
+    'max_age' => 60 * 60 * 24,
 
     'supports_credentials' => true,
 
