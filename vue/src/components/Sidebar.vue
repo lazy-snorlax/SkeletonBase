@@ -6,7 +6,7 @@
 
         <div class="menu-toggle-wrap">
             <button class="menu-toggle" @click="ToggleMenu">
-                <span class="material-icons">keyboard_double_arrow_right</span>
+                <span class="material-icons">></span>
             </button>
         </div>
 
@@ -16,8 +16,8 @@
             <router-link to="/" class="button">
                 <span class="text">Home</span>
             </router-link>
-            <router-link to="/item-1" class="button">
-                <span class="text">Item #1</span>
+            <router-link to="/login" class="button">
+                <span class="text">Login</span>
             </router-link>
             <router-link to="/item-2" class="button">
                 <span class="text">Item #2</span>
