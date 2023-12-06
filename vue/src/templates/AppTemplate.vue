@@ -1,0 +1,22 @@
+<template>
+  <div id="app">
+    <div id="wrapper">
+      <Sidebar />
+
+      <div id="page-content-wrapper">
+        <RouterView v-slot="{ Component }">
+          <template v-if="Component">
+            <Suspense :timeout="0">
+              <component :is="Component" />
+            </Suspense>
+          </template>
+        </RouterView>
+      </div>
+    </div>
+  </div>  
+</template>
+
+<script lang="ts" setup>
+  import Sidebar from '../components/app/Sidebar.vue'
+  
+</script>
